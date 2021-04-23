@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'covid19tracker';
+  BannerDataList: any;
+  BannerData: string = 'As a human being. This is small contribution to society.';
+  storeBannerSub: BehaviorSubject<any> = new BehaviorSubject("");
+
+  constructor(){}
+  
 }
