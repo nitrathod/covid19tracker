@@ -1,1 +1,39 @@
-<p>home works!</p>
+<div class="container">
+  <input class="searchbox" type="text" placeholder="Search.." name="search">
+</div>
+<div class="header fadeInUp">
+  <div class="header-mid">
+    <div class="last-update col-md-5">
+      <h4 class="difference-time" style=" color: #4d4e4dfa; font-weight: 600; "
+        *ngIf='lastupdated.hour===0; else elseBlock'> {{lastupdated.minute}} minutes ago</h4>
+      <ng-template #elseBlock>{{lastupdated.hour}} hour {{lastupdated.minute}} minutes ago</ng-template>
+      <h5 style=" color: #4d4e4dfa; font-weight: 600;" class="refreshed-time">
+        {{lastrefreshedtime | date:'dd MMM YYYY, hh:mm'}} IST</h5>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="Level fadeInUp row" style="animation-delay: 0.8s; ">
+        <div class="level-item is-cherry">
+            <h5>Confirmed</h5>
+            <!-- <h4>[+{{DailyStatus.total.confirmed}}]</h4> -->
+            <h1>{{statewisecase.confirmed}} </h1>
+        </div>
+        <div class="level-item is-blue">
+            <h5 class="heading ">Active</h5>
+            <!-- <h4>[+{{DailyStatus.total.active}}]</h4> -->
+            <h1 class="title has-text-info ">{{statewisecase.active}}</h1>
+        </div>
+        <div class="level-item is-green">
+            <h5 class="heading ">Recovered</h5>
+            <!-- <h4>[+{{DailyStatus.total.recovered}}]</h4> -->
+            <h1 class="title has-text-success ">{{statewisecase.recovered}} </h1>
+        </div>
+        <div class="level-item is-gray">
+            <h5 class="heading ">Deceased</h5>
+            <!-- <h4>[+{{DailyStatus.total.deaths}}]</h4> -->
+            <h1 class="title has-text-grey ">{{statewisecase.deaths}}</h1>
+        </div>
+    </div>
+</div>
