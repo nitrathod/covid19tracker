@@ -8,7 +8,6 @@ import { DistrictComponent } from './district/district.component';
 import { HelplineComponent } from './helpline/helpline.component';
 import { CoronaService } from './shared/corona.service';
 import { HttpClientModule } from '@angular/common/http';
-import { DemohomeComponent } from './demohome/demohome.component';
 import { DemoService } from './shared/demo.service';
 
 @NgModule({
@@ -16,8 +15,7 @@ import { DemoService } from './shared/demo.service';
     AppComponent,
     HomeComponent,
     DistrictComponent,
-    HelplineComponent,
-    DemohomeComponent
+    HelplineComponent
   ],
   imports: [
     BrowserModule,
