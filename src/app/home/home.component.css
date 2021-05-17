@@ -54,8 +54,17 @@
     margin-left: 0px;
 }
 
+h4.refreshed-time{
+    margin-top: -20px;
+    margin-bottom: -12px;
+    color: #4d4e4dfa; 
+    font-weight: 600;
+}
+
 h5.refreshed-time {
-    font-size: 10px!important;
+    color: #4d4e4dfa; 
+    font-weight: 600;
+    font-size: 20px!important;
 }
 
 /* Count css starts */
@@ -67,7 +76,13 @@ h5.refreshed-time {
     margin-top: -3rem;
 }
 
+.active{
+     margin-top: 83px;
+    
+}
+
 /* .Level .level-item:first-child {} */
+
 
 .Level .level-item {
     display: flex;

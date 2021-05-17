@@ -7,16 +7,14 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class CoronaService implements OnInit {
-  data1
+ /* data1
   state
   district
   BannerData: BehaviorSubject<any> = new BehaviorSubject('')
   districtdata: Subject<any> = new Subject<any>();
 
   url_statewise = 'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise'
-  //url_statewise = 'https://api.rootnet.in/covid19-in/stats/latest'
   url_dailycases = 'https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise/history'
-  //url_dailycases = 'https://api.rootnet.in/covid19-in/stats/history'
   ulr_districtwise = "https://api.covid19india.org/state_district_wise.json"
   url_banner = "https://api.covid19india.org/website_data.json"
   constructor(private http: HttpClient) { }
@@ -51,6 +49,19 @@ export class CoronaService implements OnInit {
       this.districtdata.next(this.district)
     }
     )
+  } */
+
+  constructor(private http: HttpClient){}
+
+  ngOnInit(){}
+
+  getAllData(): Observable<any>{
+    let url = 'https://api.covid19india.org/data.json';
+    return this.http.get(url).pipe((response) => response);
   }
 
+  getStateData(): Observable<any>{
+    let url = 'https://api.covidindiatracker.com/state_data.json';
+    return this.http.get(url).pipe((response) => response);
+  }
 }

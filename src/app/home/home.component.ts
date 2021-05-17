@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CoronaService } from '../shared/corona.service';
 import { ThrowStmt } from '@angular/compiler';
+import { CovidData } from '../Modals/covidData';
+import { ChildData } from '../Modals/childData';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +10,7 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  showArrows = {
+  /*showArrows = {
     uparrowState: false,
     downarrowState: false,
     downarrowConfirmed: false,
@@ -349,5 +351,47 @@ export class HomeComponent implements OnInit {
 
       this.calculateDiff(this.sortedDataBasedOnDate);
     }
+  } */
+
+  allData: CovidData[];
+  totalData: CovidData;
+  selectedStateCode: string;
+  selectedDistrictCode: string; 
+  stateData: CovidData;
+  statewiseData: ChildData[];
+  districtData: ChildData;
+  lastupdateddate = new Date();
+  lastupdated: any = { hour: 0, minute: 0, second: 0 };
+  lastrefreshedtime: any;
+
+  constructor(private service: CoronaService){}
+
+  ngOnInit(){
+    this.getAllData(); 
   }
+
+  getAllData(){
+    this.service.getAllData().subscribe(
+      response => {
+        this.allData = response.statewise;
+        this.totalData = this.allData.find(x => x.statecode == 'TT');
+        this.allData = this.allData.filter(x => x.statecode != 'TT' && x.statecode != 'UN');
+        this.getStateData();
+      }
+    )
+  }
+
+  getStateData() {  
+    this.service.getStateData().subscribe(  
+      response => {  
+        this.statewiseData = response;  
+      }  
+    )  
+  }  
+
+  onStateSelected() {  
+    this.stateData = this.allData.find(x => x.statecode == this.selectedStateCode)  
+    let stateCode = (this.selectedStateCode == 'LA') ? 'LK' : this.selectedStateCode;  
+    this.districtData = this.statewiseData.find(x => x.id == `IN-${stateCode}`);  
+  }  
 }

@@ -8,7 +8,6 @@ import { DistrictComponent } from './district/district.component';
 import { HelplineComponent } from './helpline/helpline.component';
 import { CoronaService } from './shared/corona.service';
 import { HttpClientModule } from '@angular/common/http';
-import { DemoService } from './shared/demo.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { DemoService } from './shared/demo.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [CoronaService, DemoService],
+  providers: [CoronaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
